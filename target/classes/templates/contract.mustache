@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body style="background-color: #dfffdf">
+<div class="container mt-3">
+    <form name="tech_contr" action="/contract1"  method="post" enctype="multipart/form-data" class="mt-3">
+{{#tech_contr}}
+        <h5>Оставьте заявку для покупки</h5>
+        <img src="https://home.be-in.ru/media/beingallery/uploads/type/2018/05/23/garden-electric-topimage.jpg" class="img-fluid" alt="Responsive image"/>
+        <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label">Id техники:</label>
+            <div class="col-sm-8">
+                <input required type="number" class="form-control" name="t_id" placeholder="id" value="{{id}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите свое ФИО:</label>
+            <div class="col-sm-8">
+                <input required type="text" class="form-control" name="u_name" placeholder="Иванов Иван Иванович">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите телефон:</label>
+            <div class="col-sm-8">
+                <input required type="tel" pattern="[0-9]{11}" class="form-control" name="tel" placeholder="8800553535">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите электронную почту:</label>
+            <div class="col-sm-8">
+                <input required type="email" class="form-control" name="email" placeholder="@email.com">
+            </div>
+        </div>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit" class="btn btn-primary">Купить</button>
+        <a href="/main">Вернуться на главное меню</a>
+    {{/tech_contr}}
+    </form>
+    {{#message2}}
+        {{message2}}
+    {{/message2}}
+</div>
+<!--<div>
+    Добавление контракта
+    <form method="post">
+        <input type="text" name="t_id" placeholder="Введите название техники">
+        <input type="text" name="u_name" placeholder="Введите свое имя">
+        <input type="text" name="tel" placeholder="Введите телефон">
+        <input type="text" name="email" placeholder="Введите электронную почту">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit">Создать контракт</button>
+    </form>
+</div>-->
+</body>
+</html>

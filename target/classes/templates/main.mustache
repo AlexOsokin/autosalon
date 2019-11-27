@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <title>Spring Security Example </title>
+</head>
+<body style="background-color: #DCDCDC">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9A9A9">
+    <a class="navbar-brand" href="/">Carsade</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Управление каталогом</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/registration">Зерегистрировать пользователя</a>
+            </li>
+        </ul>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <button type="submit" class="btn btn-primary">Выйти</button>
+        </form>
+    </div>
+</nav>
+<div class="form-group col-md-6">
+<h4 class="mt-2">Поиск техники</h4>
+<div  class="form-row">
+    <form method="post" action="filter" class="form-inline" ml-1>
+    <input required type="text" name="filter" placeholder="Введите тип техники">
+    <input  type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <button type="submit" class="btn btn-primary ml-2">Найти по типу</button>
+    </form>
+    <form method="post" action="filter1" class="form-inline ml-4">
+    <input required type="number" name="filter1" placeholder="Введите цену">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <button type="submit" class="btn btn-primary ml-2">Найти по  цене</button>
+    </form>
+</div>
+    <a href="/main">Показать всю технику</a>
+</div>
+
+    <div class="card-columns container mt-3">
+        {{#messages}}
+            <div class="card my-3" style="width: 18rem;">
+                <div class="card-header">
+                    Id: {{id}}
+                </div>
+                <div>
+                    <ul>
+                        <li>Марка: {{type}}</li>
+                        <li>Название модели: {{name}}</li>
+                        <li>Состояние: {{cond}}</li>
+                        <li>Год выпуска: {{old}}</li>
+                        <li>Цена: {{price}} рублей</li>
+                        <td><a href="delete/{{id}}">Забронировать</a></td>
+                    </ul>
+                </div>
+            </div>
+        {{/messages}}
+    </div>
+</body>
+</html>

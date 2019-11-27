@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color: #DCDCDC">
+<div class="container mt-3">
+    <form method="post" enctype="multipart/form-data" class="mt-3">
+        <h3>Добавть автомобиль</h3>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите марку:</label>
+            <div class="col-sm-8">
+                <input required type="text" class="form-control" name="type" placeholder="Марка">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите название модели:</label>
+            <div class="col-sm-8">
+                <input required type="text" class="form-control" name="name" placeholder="Название модели">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите тех. состояние:</label>
+            <div class="col-sm-8">
+                <input required type="text" class="form-control" name="cond" placeholder="Тех. состояние">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите год выпуска:</label>
+            <div class="col-sm-8">
+                <input required type="number" class="form-control" name="old" placeholder="Год выпуска" max="2019" min="1900">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Введите цену:</label>
+            <div class="col-sm-8">
+                <input required type="number" class="form-control" name="price" placeholder="Цена" min="0">
+            </div>
+        </div>
+        <!--<input type="text" name="type" placeholder="Введите тип">
+        <input type="text" name="name" placeholder="Введите название модели">
+        <input type="text" name="cond" placeholder="Введите техн. состояние">
+        <input type="text" name="old" placeholder="Год выпуска">
+        <input type="text" name="price" placeholder="Введите цену">-->
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <div class="form-group row">
+        <button type="submit" class="btn btn-primary">Добавить</button>
+            <!-- <a href="/contract_adm" class="mt-2 ml-3">Список контрактов</a>-->
+        </div>
+        <a href="/main">Вернуться на главное меню</a>
+    </form>
+</div>
+    <div class="card-columns container mt-3">
+        {{#messages}}
+            <div class="card my-3" style="width: 18rem;">
+                <div class="card-header">
+                    Id: {{id}}
+                </div>
+                <div>
+                    <ul>
+                        <li>Марка: {{type}}</li>
+                        <li>Название модели: {{name}}</li>
+                        <li>Состояние: {{cond}}</li>
+                        <li>Год выпуска: {{old}}</li>
+                        <li>Цена: {{price}} рублей</li>
+                        <td><a href="delete/{{id}}">УДАЛИТЬ</a></td>
+                        <td><a href="update/{{id}}">ИЗМЕНИТЬ</a></td>
+                    </ul>
+                </div>
+            </div>
+        {{/messages}}
+    </div>
+
+</body>
+</html>
